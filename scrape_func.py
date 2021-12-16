@@ -69,3 +69,4 @@ def get_data_all_url(district_url):
     for data in all_url:
         registered, envelopes, valid, political_parties = get_vote_data(data)
         yield registered, envelopes, valid, political_parties
+
