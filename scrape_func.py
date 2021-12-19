@@ -68,5 +68,7 @@ def get_data_all_url(district_url):
     all_url = get_cities_url(district_url)
     for data in all_url:
         registered, envelopes, valid, political_parties = get_vote_data(data)
-        yield registered, envelopes, valid, political_parties
-
+        data_unification = registered, envelopes, valid, political_parties
+        yield data_unification
+        for key in political_parties:
+            return key
