@@ -14,7 +14,7 @@ url = "https://volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=2&xnumnuts=2103"
 
 def create_csv(district_url):
     test = scrape_func.get_location_code(district_url)
-    with open('vote_data.csv', 'w') as csv_file:
+    with open('vote_data.csv', 'w', encoding="utf-8", newline="") as csv_file:
         header = ["CODE", "LOCATION"]
         writer = csv.DictWriter(csv_file, fieldnames=header)
         writer.writeheader()
