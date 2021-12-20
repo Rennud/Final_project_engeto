@@ -25,7 +25,7 @@ def create_csv(district_url):
             "VALUE": val,
     })
 
-    #df.to_csv("vote_data.csv", index=False)
+    df.to_csv("vote_data.csv", index=False)
 
 create_csv(url)
 
