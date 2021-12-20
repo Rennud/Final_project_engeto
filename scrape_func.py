@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup as bs
+import pandas as pd
 
 
 def get_connection(district_url):
@@ -41,6 +42,10 @@ def get_vote_data(city_url):
     except requests.exceptions.HTTPError as err:
         raise exit(err)
     soup = bs(r.text, "html.parser")
+    format_data = soup.find_all(text=True)
+    for d in format_data:
+        clean_data = d.replace("\xa0", "")
+        d.replace_with(clean_data)
 
     # get registered, envelopes, valid
     registered = soup.find("td", {"class": "cislo", "headers": "sa2", "data-rel": "L1"})
@@ -50,7 +55,7 @@ def get_vote_data(city_url):
     return registered.text, envelopes.text, valid.text
 
 
-def political_parties_dict(city_url):
+def get_political_parties_dict(city_url):
         """
         Scrape needed data from city_url to get results of elections
         registered voters, submitted, envelopes, verified votes
@@ -68,14 +73,22 @@ def political_parties_dict(city_url):
         number_votes = number_votes_table_1 + number_votes_table_2
         politic_parties_results = zip(parties_names, number_votes)
 
-        return dict(politic_parties_results)
+        return parties_names, number_votes
 
 
 def get_data_all_url(cities_url):
     all_url = cities_url
     for data in all_url:
         registered, envelopes, valid = get_vote_data(data)
-        political_parties = political_parties_dict(data)
+        pn, nv = get_political_parties_dict(data)
+        yield registered, envelopes, valid, pn, nv
+
+
+
+
+
+
+
 
 
 
