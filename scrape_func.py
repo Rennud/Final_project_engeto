@@ -35,7 +35,11 @@ def get_location_code(district_url):
     return dict(sorted_codes_locations)
 
 
-
+def get_vote_data(city_url):
+    try:
+        r = requests.get(city_url)
+    except requests.exceptions.HTTPError as err:
+        raise exit(err)
     soup = bs(r.text, "html.parser")
 
     # get registered, envelopes, valid
@@ -43,7 +47,7 @@ def get_location_code(district_url):
     envelopes = soup.find("td", {"class": "cislo", "headers": "sa3", "data-rel": "L1"})
     valid = soup.find("td", {"class": "cislo", "headers": "sa6", "data-rel": "L1"})
 
-    # get political parties and votes -> dict
+    return registered.text, envelopes.text, valid.text
 
 
 def political_parties_dict(city_url):
@@ -67,10 +71,11 @@ def political_parties_dict(city_url):
         return dict(politic_parties_results)
 
 
-def get_data_all_url(district_url):
-    all_url = get_cities_url(district_url)
+def get_data_all_url(cities_url):
+    all_url = cities_url
     for data in all_url:
-        registered, envelopes, valid, political_parties = get_vote_data(data)
-        return registered, envelopes, valid, political_parties
+        registered, envelopes, valid = get_vote_data(data)
+        political_parties = political_parties_dict(data)
+
 
 

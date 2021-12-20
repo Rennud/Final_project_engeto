@@ -15,9 +15,9 @@ url = "https://volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=2&xnumnuts=2103"
 
 def create_csv(district_url):
     code_location = scrape_func.get_location_code(district_url)
-    test = scrape_func.political_parties_dict("https://volby.cz/pls/ps2017nss/ps311?xjazyk=CZ&xkraj=2&xobec=535010&xvyber=2103")
+    parties_names = scrape_func.political_parties_dict("https://volby.cz/pls/ps2017nss/ps311?xjazyk=CZ&xkraj=2&xobec=535010&xvyber=2103")
     header = ["CODE", "LOCATION", "REGISTERED", "ENVELOPES", "VALID"]
-    for i in test.keys():
+    for i in parties_names.keys():
         header.append(i)
     with open('vote_data.csv', 'w', encoding="utf-8", newline="") as csv_file:
         writer = csv.writer(csv_file)
@@ -25,7 +25,6 @@ def create_csv(district_url):
         writer = csv.writer(csv_file)
         for key, value in code_location.items():
             writer.writerow([key, value])
-
 
 create_csv(url)
 
