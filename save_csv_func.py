@@ -17,15 +17,24 @@ def create_csv(district_url):
     val = [i[2] for i in vote_data]
     votes_parties = [i[4] for i in vote_data]
     print(votes_parties)
-    df = pd.DataFrame({
-            "CODE": code_location.keys(),
-            "LOCATION": code_location.values(),
-            "REGISTERED": reg,
-            "ENVELOPES": env,
-            "VALUE": val,
-    })
+    header = ["CODE", "LOCATION", "REGISTERED", "ENVELOPES", "VALUE"]
+    with open("testr.csv", "w", newline='', encoding="utf-8") as csv_file:
+        writer = csv.writer(csv_file)
+        for i, name in enumerate(names):
+            header.append(name)
+        writer.writerow(header)
+        for key, value in code_location.items():
+            writer.writerow([key, value])
+        for i[0] in vote_data:
+            writer.writerow(i)
 
-    df.to_csv("vote_data.csv", index=False)
+
+
+
+
+
+
+    #df.to_csv("vote_data.csv", index=False)
 
 create_csv(url)
 

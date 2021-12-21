@@ -71,7 +71,6 @@ def get_political_parties_dict(city_url):
         number_votes_table_1 = [vote.text for vote in soup.find_all("td", {"class": "cislo", "headers": "t1sa2 t1sb3"})]
         number_votes_table_2 = [vote.text for vote in soup.find_all("td", {"class": "cislo", "headers": "t2sa2 t2sb3"})]
         number_votes = number_votes_table_1 + number_votes_table_2
-        politic_parties_results = zip(parties_names, number_votes)
 
         return parties_names, number_votes
 
