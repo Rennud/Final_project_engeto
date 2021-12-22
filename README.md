@@ -9,7 +9,6 @@ Knihovny, které jsou použity jsou uloženy v requirements.txt. Pro instalaci v
 <p>Nainstalujeme knihovny: <code>$ pip install -r requirements.txt</code></p>
 
 ## Spuštění projektu
-Spuštění souboru election
+<p>Spuštění souboru <code>election_scraper.py</code>lze spustit pomocí příkazového řádku a požaduje dva povinné argumenty.</p>
 
-
-
+```python3 election_scraper.py <odkaz-uzemniho-celku> <vysledny-soubor>```
