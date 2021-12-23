@@ -9,7 +9,7 @@ def main():
     AND FILE NAME UNDER WHICH IT IS SAVED
     """
     print(f"DOWNLOADING DATA FROM SELECTED URL: {district_url}")
-    save_csv_func.create_csv(district_url)
+    save_csv_func.create_csv(district_url, save_to)
     print("QUITTING: election scraper")
 
 
