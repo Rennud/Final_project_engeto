@@ -22,7 +22,7 @@ Výsledky hlasování pro okres Kladno:
 2. argument: **vysledky_kladno.csv**
 
 <p>Spuštění programu:<p>
-<code>python3 election_scraper.py ht<span>tp://</span>"volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=2&xnumnuts=2103" "vysledky_kladno.csv"</code>
+<code>python3 election_scraper.py "ht<span>tp://</span>volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=2&xnumnuts=2103" "vysledky_kladno.csv"</code>
   
 <p>Průběh stahování:</p>
 <pre><code>DOWNLOADING DATA FROM SELECTED URL: https://volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=2&xnumnuts=2103
