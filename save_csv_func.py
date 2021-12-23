@@ -2,7 +2,7 @@ import csv
 import scrape_func
 
 
-def create_csv(district_url):
+def create_csv(district_url, filename):
     """
     Function that use functions from scrape_func script, create multiple lists that each list contains data that
     are saved as one column in csv under proper header.
@@ -27,11 +27,9 @@ def create_csv(district_url):
     # Creating csv file
     header = ["CODE", "LOCATION", "REGISTERED", "ENVELOPES", "VALID"]
     print("SAVING TO FILE: vysledky_kladno.csv")
-    with open("vysledky_kladno.csv", "w", newline="", encoding="utf-8") as csv_file:
+    with open(filename, "w", newline="", encoding="utf-8") as csv_file:
         writer = csv.writer(csv_file, escapechar=" ", quoting=csv.QUOTE_NONE)
         for name in names:
             header.append(name)
         writer.writerow(header)
         writer.writerows(rows)
-
-create_csv("https://volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=3&xnumnuts=3101")
