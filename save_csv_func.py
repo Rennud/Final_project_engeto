@@ -20,7 +20,7 @@ def create_csv(district_url, filename):
     envelopes = [i[1] for i in vote_data]
     valid = [i[2] for i in vote_data]
     votes_parties = [i[4] for i in vote_data]
-    format_votes = [",".join(i).strip("") for i in votes_parties]
+    format_votes = [",".join(i) for i in votes_parties]
     # I use zip to save the data to csv in the required order
     rows = zip(code, location, registered, valid, envelopes, format_votes)
     # Creating csv file
