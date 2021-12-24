@@ -26,7 +26,7 @@ def create_csv(district_url, filename):
     rows = zip(code, location, registered, valid, envelopes, format_votes)
     # Creating csv file
     header = ["CODE", "LOCATION", "REGISTERED", "ENVELOPES", "VALID"]
-    print("SAVING TO FILE: vysledky_kladno.csv")
+    print(f"SAVING TO FILE:{filename} .csv")
     with open(filename, "w", newline="", encoding="utf-8") as csv_file:
         writer = csv.writer(csv_file, escapechar=" ", quoting=csv.QUOTE_NONE)
         for name in names:
