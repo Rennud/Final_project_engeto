@@ -3,10 +3,9 @@ import scrape_func
 
 
 def create_csv(district_url, filename):
-    """
-    Function that use functions from scrape_func script, create multiple lists that each list contains data that
-    are saved as one column in csv under proper header.
-    """
+    """Function that use functions from scrape_func script, create multiple lists that each list contains data that
+    are saved as one column in csv under proper header."""
+
     code_location = scrape_func.get_location_code(district_url)
     cities_url = scrape_func.get_cities_url(district_url)
     # That is just for help to create a header
